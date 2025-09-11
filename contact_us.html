@@ -27,28 +27,6 @@
             background-color: #04AA6D;
             color: white;
             }
-            .topnav-right{
-                float: right;
-                padding: 6px;
-                width: 100%;
-                margin-top: 8px;
-                margin-right: 16px;
-                font-size: 17px;
-                border-radius: 10%;
-            }
-            @media screen and (max-width: 600px) {
-                .topnav a, .topnav-right {
-                    float: none;
-                    display: block;
-                    text-align: left;
-                    width: 100%;
-                    margin: 0;
-                    padding: 14px;
-                }
-                .topnav-right {
-                    border: 1px solid #ccc;
-                }
-            }
             .destinationinput{
                 text-align: right;
 
@@ -139,6 +117,11 @@
                     width: 50%;
                     text-align: left;
                 }
+                .contact{
+                    text-align: left;
+                    font-size: 100px;
+                    text-decoration: bold;
+                }
                 .contact_us{
                     text-align: left;
                     margin: 30px;
@@ -168,25 +151,15 @@
 
                 }
         </style>
-
     </head>
     <body>
-        <section>
+                <section>
             <div class="topnav">
                 <image src="lets_go_logo.png" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="90px">
                 <a>Let's Go</a>
                 <a href="travel_recommendation.html" id="home">Home </a>
                 <a href="about_us.html" id="aboutus">About Us</a>
                 <a href="contact_us.html" id="contact">Contact Us </a>
-                <div class="topnav-right">
-                    <input type="text" id="destinationInput" placeholder="Enter a destination or keyword">
-                    <button id='btnSearch' >Search</button>
-                    <button id='clrResults' >Clear</button>
-                  </div>
-            </div>
-            <div class="intro">
-                <h1>Find your next exciting destination!</h1>
-                <h4>Take a change of pace, or look for your next great destination of travel. Discover a new passion that awaits you at your next trip.</h4>
             </div>
             <div class="footer">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -200,5 +173,24 @@
             </div>
  
         </section>
+            <!-- Recommendation Form -->
+    <section id="contact_us">
+      <div class="flex_center">
+        <div id="contact"> Contact Us</div>
+        <fieldset>
+          <legend class="introduction">Contact Us to start your adventure today!</legend>          
+          <input type="text" placeholder="Name"> <br/>
+          <textarea id="new_submission" cols="500" rows="10" placeholder="Message"></textarea>
+          <div class="flex_center">
+            <button id="submission_btn" onclick="addSubmission()">Submit</button>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+        <script>
+            function thankyou(){
+                alert('Thank you for contacting us!')
+            }
+        </script>
     </body>
 </html>
