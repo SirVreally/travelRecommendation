@@ -29,7 +29,6 @@
             }
             .destinationinput{
                 text-align: right;
-
             }
             #h4{
                 text-align: left;
@@ -60,7 +59,7 @@
             background-color: #0056b3;
             }
             body{
-                background-image:url('brazil_background_image.jpg');
+                background-image:url('lets_go_background_image.jpg');
                 background-attachment:fixed;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -141,19 +140,10 @@
                     margin: 30px;
                     border: bold;
                 }
-                .ceo{
-
-                }
-                .teamlead{
-
-                }
-                .traveladvisor{
-
-                }
         </style>
     </head>
     <body>
-                <section>
+        <section>
             <div class="topnav">
                 <image src="lets_go_logo.png" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="90px">
                 <a>Let's Go</a>
@@ -169,28 +159,27 @@
                 <a href="#" class="fa fa-twitter fa-2x"></a></br></br>
                 <a href="#" class="fa fa-snapchat fa-2x"></a></br></br>
                 <a href="#" class="fa fa-instagram fa-2x"></a>
-                </div>
             </div>
  
         </section>
-            <!-- Recommendation Form -->
-    <section id="contact_us">
-      <div class="flex_center">
-        <div id="contact"> Contact Us</div>
-        <fieldset>
-          <legend class="introduction">Contact Us to start your adventure today!</legend>          
-          <input type="text" placeholder="Name"> <br/>
-          <textarea id="new_submission" cols="500" rows="10" placeholder="Message"></textarea>
-          <div class="flex_center">
-            <button id="submission_btn" onclick="addSubmission()">Submit</button>
-          </div>
-        </fieldset>
-      </div>
-    </section>
-        <script>
-            function thankyou(){
-                alert('Thank you for contacting us!')
-            }
-        </script>
+                <!-- Submission Form -->
+        <section id="contact_us">
+            <div class="contact_page">
+                <h1> Contact Us</h1>
+                <p>Contact Us to start your adventure today!</p>
+                <form id="contactForm">
+                    <div>
+                    <input type="text" id="name" name="name"  placeholder="Name" required></br>
+                    </div>
+                    <div>
+                    <input type="email" id="email" name="email" placeholder="Email" required></br>
+                    </div>
+                    <div>
+                    <textarea id="new_submission" cols="100" rows="10" placeholder="Message"></textarea>
+                    </div>
+                    <button id="submission_btn" onclick="addSubmission()">Submit</button>
+                </form>
+            </div>
+        </section>
     </body>
 </html>
