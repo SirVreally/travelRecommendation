@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8" />
         <title>Let's Go</title>
         <style>
             /* Add a black background color to the top navigation */
@@ -27,6 +29,7 @@
             background-color: #04AA6D;
             color: white;
             }
+            /* for the top right area on Home screen for locations to search*/
             .topnav-right{
                 float: right;
                 padding: 6px;
@@ -36,6 +39,7 @@
                 font-size: 17px;
                 display: inline-block;
             }
+            /* search area on mobile positioning  */
             @media screen and (max-width: 600px) {
                 .topnav a, .topnav-right {
                     float: none;
@@ -46,6 +50,7 @@
                     padding: 14px;
                 }
             }
+            /* Search button area for inputs */
             .searchbutton{
                 text-align: right;
                 width: 60%;
@@ -54,9 +59,56 @@
                 border-radius: 8px;
                 
             }
-            .fa-search{
-                font-size: 8px;
-                border-radius: 8px;
+            /* Container holds the search area and results side by side */
+            .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            height: 100vh; /* Full viewport height */
+            box-sizing: border-box;
+            gap: 20px;
+            }
+
+            /* Search controls on the left */
+            .search-area {
+            flex: 1;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            }
+
+            /* Results column on the right */
+            .results-column {
+            flex: 0 0 350px; 
+            display: flex;
+            flex-direction: column; 
+            gap: 15px;
+            overflow-y: auto;
+            max-height: 90vh;
+            padding-left: 15px;
+            background-color: transparent;
+            border-radius: 5px;
+            }
+
+            /* Individual recommendation card styling */
+            .recommendation-card {
+            border: 2px solid #007acc; 
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #007bff; 
+            box-shadow: none; 
+            text-align: margin-right;
+            }
+
+            .recommendation-card img {
+            width: 20%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            float: right;
             }
             #h4{
                 text-align: left;
@@ -66,10 +118,12 @@
                 text-align: left;
                 margin: 30px
             }
+            /* contact us */
             #contactUs {
             max-width: 400px;
             margin: 0 auto;
             }
+            /* contact us area for input */
             #contactUs input,
             #contactUs textarea {
             width: 100%;
@@ -86,6 +140,7 @@
             #contactUs button:hover {
             background-color: #0056b3;
             }
+            /* Background image for main site */
             body{
                 background-image:url('lets_go_background_image.jpg');
                 background-attachment:fixed;
@@ -102,7 +157,7 @@
             border-radius: 50%;
             }
 
-            /* Add a hover effect if you want */
+            /* Added hover effect  */
             .fa:hover {
             opacity: 0.7;
             }
@@ -138,6 +193,7 @@
                 );
                 color: white;
                 }
+                /* location for social media icons */
                 .footer {
                     position: fixed;
                     bottom: 0;
@@ -156,13 +212,12 @@
                 <a href="about_us.html" id="aboutus">About Us</a>
                 <a href="contact_us.html" id="contact">Contact Us </a>
                 <div class="topnav-right">
-                    <input type="text" id="destinationInput" class="searchbutton" placeholder="Enter a destination or keyword">
-                    <button id='btnSearch' onclick="addSubmission()">
-                        <i class="fa fa-search"></i>
-                    </button>
-                    <button id='clrResults' >Clear</button>
+                    <input type="text" id="searchInput" class="searchbutton" placeholder="Enter a destination or keyword">
+                    <button id='searchBtn' >Search</button>
+                    <button id='clearBtn' >Clear</button>
                 </div>
             </div>
+            <div id="results" class="results-column"></div>
             <div class="intro">
                 <h1>Find your next exciting destination!</h1>
                 <h4>Take a change of pace, or look for your next great destination of travel. Discover a new passion that awaits you at your next trip.</h4>
@@ -177,6 +232,6 @@
                 <a href="#" class="fa fa-instagram fa-2x"></a>
             </div>
         </section>
-        <script
+        <script src="travel_Recommendation.js"></script>
     </body>
 </html>

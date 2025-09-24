@@ -19,34 +19,83 @@ function showPopup(bool) {
     document.getElementById('popup').style.visibility = 'hidden'
   }
 }
-function searchLocation() {
-    const input = document.getElementById('destinationInput').value.toLowerCase();
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = '';
-
-fetch('travel_recommendation_api.json')
+function searchFromJSON(keyword, category) {
+  fetch('travel_recommendation_api.json')
     .then(response => response.json())
     .then(data => {
-    const countries = data.conditions.find(item => item.name.toLowerCase() === input);
+      const allCities = data.countries.flatMap(country => country.cities);
+      const lowerKeyword = keyword.toLowerCase();
 
-    if (condition) {
-        const name = countries.name.join(', ');
-        const imageUrl = countries.imageUrl.join(', ');
-        const description = countries.description;
+      let results = [];
 
-        resultDiv.innerHTML += `<h2>${countries.name}</h2>`;
-        resultDiv.innerHTML += `<img src="${countries.imageUrl}" alt="hjh">`;
+      if (category === 'beach') {
+        results = allCities.filter(city =>
+          city.name.toLowerCase().includes('beach') ||
+          city.description.toLowerCase().includes('beach')
+        );
+      } else if (category === 'temple') {
+        results = allCities.filter(city =>
+          city.name.toLowerCase().includes('temple') ||
+          city.description.toLowerCase().includes('temple')
+        );
+      } else if (category === 'country') {
+        // Filter cities by country name matching keyword
+        results = data.countries.filter(country =>
+          country.name.toLowerCase() === lowerKeyword
+        ).flatMap(country => country.cities);
+      } else {
+        // 'all' category or default: search keyword in name or description
+        results = allCities.filter(city =>
+          city.name.toLowerCase().includes(lowerKeyword) ||
+          city.description.toLowerCase().includes(lowerKeyword)
+        );
+      }
 
-        resultDiv.innerHTML += `<p><strong>Name:</strong> ${Name}</p>`;
-        resultDiv.innerHTML += `<p><strong>Image:</strong> ${imageUrl}</p>`;
-        resultDiv.innerHTML += `<p><strong>Description:</strong> ${description}</p>`;
-        } else {
-        resultDiv.innerHTML = 'Country not found.';
-        }
+      const resultsContainer = document.getElementById('results');
+      resultsContainer.innerHTML = '';
+
+      if (results.length > 0) {
+        results.forEach(city => {
+          const card = document.createElement('div');
+          card.classList.add('recommendation-card');
+
+          const img = document.createElement('img');
+          img.src = city.imageUrl;
+          img.alt = city.name;
+
+          const title = document.createElement('h3');
+          title.textContent = city.name;
+
+          const desc = document.createElement('p');
+          desc.textContent = city.description;
+
+          card.appendChild(img);
+          card.appendChild(title);
+          card.appendChild(desc);
+
+          resultsContainer.appendChild(card);
+        });
+      } else {
+        resultsContainer.textContent = 'No results found for: ' + keyword;
+      }
     })
-      .catch(error => {
-        console.error('Error:', error);
-        resultDiv.innerHTML = 'An error occurred while fetching data.';
-      });
+    .catch(error => {
+      console.error('Error fetching JSON data:', error);
+    });
 }
-    btnSearch.addEventListener('click', searchCondition);
+
+// Attach event listener to search button
+document.getElementById('searchBtn').addEventListener('click', () => {
+  const keyword = document.getElementById('searchInput').value.trim();
+
+  if (keyword !== 'all') {
+    searchFromJSON(keyword);
+  }
+});
+
+// Clear button logic
+document.getElementById('clearBtn').addEventListener('click', () => {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('searchCategory').value = 'all';
+  document.getElementById('results').innerHTML = '';
+});
