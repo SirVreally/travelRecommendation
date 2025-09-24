@@ -10,6 +10,7 @@
             overflow: hidden;
             border-radius: 12px;
             }
+
             /* Style the links inside the navigation bar */
             .topnav a {
             float: center;
@@ -19,53 +20,73 @@
             text-decoration: none;
             font-size: 18px;
             }
+
             /* Change the color of links on hover */
             .topnav a:hover {
             background-color: #ddd;
             color: black;
             }
+
             /* Add a color to the active/current link */
             .topnav a.active {
             background-color: #04AA6D;
             color: white;
             }
-            /* for the top right area on Home screen for locations to search*/
-            .topnav-right{
-                float: right;
-                padding: 6px;
-                width: 50%;
-                margin-top: 8px;
-                margin-right: 16px;
-                font-size: 17px;
-                display: inline-block;
+
+           .search-bar {
+            float: right;
+            display: flex;
+            max-width: 800px;
+            width: 30%;   
+            height: 10%;
+            margin-bottom: 10px;   
+            border-radius: 5px;    
+            overflow: hidden;      
+            box-shadow: 0 0 5px rgba(0,0,0,0.1); 
             }
-            /* search area on mobile positioning  */
-            @media screen and (max-width: 600px) {
-                .topnav a, .topnav-right {
-                    float: none;
-                    display: block;
-                    text-align: left;
-                    width: 100%;
-                    margin: 0;
-                    padding: 14px;
-                }
+
+            .search-bar input {
+            flex: 1;               
+            padding: 10px 15px;
+            font-size: 1rem;
+            border: none;         
+            outline: none;
             }
-            /* Search button area for inputs */
-            .searchbutton{
-                text-align: right;
-                width: 60%;
-                font-size: 20px;
-                text-align: center;
-                border-radius: 8px;
-                
+
+            .search-bar button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;          
+            cursor: pointer;
+            background-color: #007acc;
+            color: white;
+            transition: background-color 0.3s ease;
+            user-select: none;
             }
+
+            .search-bar button:hover {
+            background-color: #005f99;
+            }
+
+            /* Differentiate Clear button */
+            #clearBtn {
+            background-color: #ccc;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            #clearBtn:hover {
+            background-color: #999;
+            color: white;
+            }
+
             /* Container holds the search area and results side by side */
             .container {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             padding: 20px;
-            height: 100vh; /* Full viewport height */
+            height: 100vh; 
             box-sizing: border-box;
             gap: 20px;
             }
@@ -73,7 +94,7 @@
             /* Search controls on the left */
             .search-area {
             flex: 1;
-            max-width: 400px;
+            max-width: 700px;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -81,10 +102,11 @@
 
             /* Results column on the right */
             .results-column {
-            flex: 0 0 350px; 
+            float: right;
+            flex: 0 0 300px; 
             display: flex;
             flex-direction: column; 
-            gap: 15px;
+            gap: 12px;
             overflow-y: auto;
             max-height: 90vh;
             padding-left: 15px;
@@ -92,31 +114,48 @@
             border-radius: 5px;
             }
 
-            /* Individual recommendation card styling */
+            /* Smaller recommendation cards with horizontal layout */
             .recommendation-card {
-            border: 2px solid #007acc; 
-            padding: 10px;
+            display: flex;
+            border: 3px solid #3cc;
             border-radius: 5px;
-            background-color: #007bff; 
-            box-shadow: none; 
-            text-align: margin-right;
+            padding: 8px;
+            background-color: #a6a6a6;
+            box-shadow: none;
+            max-width: 500px;  
+            gap: 10px;
+            align-items: center;
+            }
+
+            .recommendation-card:hover {
+                background-color: #fff;
             }
 
             .recommendation-card img {
-            width: 20%;
+            width: 40%;
             height: 200px;
             object-fit: cover;
             border-radius: 5px;
             margin-bottom: 8px;
             float: right;
             }
-            #h4{
-                text-align: left;
-                margin: 0 auto;
-            }
-            .intro{
-                text-align: left;
-                margin: 30px
+
+            .intro {
+            text-align: left;
+            margin: -10px;
+            display: flex;
+            padding: 8px;
+            background: radial-gradient(
+                circle at top left,
+                #a6a6a6 20%,
+                transparent
+            );
+            box-shadow: none;
+            width: 100%;  
+            height: 400px;
+            gap: 10px;
+            align-items: center;
+            font-size: 30px;
             }
             /* contact us */
             #contactUs {
@@ -142,10 +181,10 @@
             }
             /* Background image for main site */
             body{
-                background-image:url('lets_go_background_image.jpg');
-                background-attachment:fixed;
-                background-repeat: no-repeat;
-                background-size: cover;
+            background-image:url('lets_go_background_image.jpg');
+            background-attachment:fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
             }
             /* Style all font awesome icons */
             .fa {
@@ -211,7 +250,7 @@
                 <a href="travel_recommendation.html" id="home">Home </a>
                 <a href="about_us.html" id="aboutus">About Us</a>
                 <a href="contact_us.html" id="contact">Contact Us </a>
-                <div class="topnav-right">
+                <div class="search-bar">
                     <input type="text" id="searchInput" class="searchbutton" placeholder="Enter a destination or keyword">
                     <button id='searchBtn' >Search</button>
                     <button id='clearBtn' >Clear</button>
@@ -219,8 +258,8 @@
             </div>
             <div id="results" class="results-column"></div>
             <div class="intro">
-                <h1>Find your next exciting destination!</h1>
-                <h4>Take a change of pace, or look for your next great destination of travel. Discover a new passion that awaits you at your next trip.</h4>
+                <h1>Find your next</br> exciting destination!</h1>
+                <p>Take a change of pace, or look for your next great destination of travel.</br> Discover a new passion that awaits you at your next trip.</p>
             </div>
             <div class="footer">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
