@@ -38,25 +38,74 @@
                 text-align: left;
                 margin: 30px
             }
-            #contactUs {
-            max-width: 400px;
-            margin: 0 auto;
+            .contact-page {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
             }
-            #contactUs input,
-            #contactUs textarea {
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 8px;
+
+            .contact-page h1 {
+            text-align: center;
+            color: #007acc;
+            margin-bottom: 25px;
             }
-            #contactUs button {
-            padding: 10px 20px;
-            background-color: #007bff;
+
+            form {
+            display: flex;
+            flex-direction: column;
+            }
+
+            label {
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            textarea {
+            padding: 10px 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+            }
+
+            input[type="text"]:focus,
+            input[type="email"]:focus,
+            textarea:focus {
+            border-color: #007acc;
+            outline: none;
+            }
+
+            button[type="submit"] {
+            padding: 14px 0;
+            width: 120px;
+            background-color: #005f99;
             color: white;
+            font-size: 1.1rem;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
             }
-            #contactUs button:hover {
-            background-color: #0056b3;
+
+            button[type="submit"]:hover {
+            background-color: #005f99;
+            }
+
+            /* Responsive for smaller screens */
+            @media (max-width: 600px) {
+            .contact-container {
+                margin: 20px;
+                padding: 20px;
+            }
             }
             body{
                 background-image:url('lets_go_background_image.jpg');
@@ -177,7 +226,7 @@
                     <div>
                     <textarea id="new_submission" cols="100" rows="10" placeholder="Message"></textarea>
                     </div>
-                    <button id="submission_btn" onclick="addSubmission()">Submit</button>
+                    <button type="submit" onclick="addSubmission()">Submit</button>
                 </form>
             </div>
         </section>

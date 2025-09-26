@@ -104,6 +104,8 @@
             .results-column {
             float: right;
             flex: 0 0 300px; 
+            position: absolute;
+            right: 50px;
             display: flex;
             flex-direction: column; 
             gap: 12px;
@@ -112,13 +114,7 @@
             padding-left: 15px;
             background-color: transparent;
             border-radius: 5px;
-            z-index: 1000;
-            }
-
-            /* Optional: Style for individual search results */
-            .results-column div {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
+            z-index: 5000;
             }
 
             /* Smaller recommendation cards with horizontal layout */
@@ -144,7 +140,20 @@
             object-fit: cover;
             border-radius: 5px;
             margin-bottom: 8px;
-            float: right;
+            float: absolute;
+            }
+            .view-button {
+            margin-top: 10px;
+            padding: 6px 12px;
+            background-color: #005f99;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+
+            .view-button:hover {
+            background-color: #3cc;
             }
 
             .intro {
@@ -264,7 +273,7 @@
                     <button id='clearBtn' >Clear</button>
                 </div>
             </div>
-            <div id="searchResultsOverlay" class="results-column"></div>
+            <div id="results" class="results-column"></div>
             <div class="intro">
                 <h1>Find your next</br> exciting destination!</h1>
                 <p>Take a change of pace, or look for your next great destination of travel.</br> Discover a new passion that awaits you at your next trip.</p>

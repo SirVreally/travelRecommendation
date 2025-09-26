@@ -119,13 +119,25 @@ function toPluralArrayName(keyword) {
   
         const desc = document.createElement('p');
         desc.textContent = item.description || '';
+
+        const viewButton = document.createElement('button');
+        viewButton.textContent = 'View';
+        viewButton.classList.add('view-button');
+  
+        // Event listener to navigate to another page, e.g., details.html
+        // Pass the item name as a query parameter (URL encoded)
+        viewButton.addEventListener('click', () => {
+          const encodedName = encodeURIComponent(item.name);
+          window.location.href = `contact_us.html`;
+        });
   
         textContainer.appendChild(title);
         textContainer.appendChild(desc);
-  
+
         card.appendChild(img);
         card.appendChild(textContainer);
-  
+        card.appendChild(viewButton);
+          
         resultsContainer.appendChild(card);
       });
     } else {
