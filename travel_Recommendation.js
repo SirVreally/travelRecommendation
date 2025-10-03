@@ -30,6 +30,22 @@ function toPluralArrayName(keyword) {
     };
     return pluralMap[keyword.toLowerCase()] || null;
   }
+  // Get local time string for a given timezone
+function getLocalTime(timezone) {
+  if (!timezone) return 'Time not available';
+  try {
+    const options = {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: timezone
+    };
+    return new Intl.DateTimeFormat('en-US', options).format(new Date());
+  } catch (e) {
+    return 'Invalid timezone';
+  }
+}
   
   function searchFromJSON(keyword) {
     fetch('travel_recommendation_api.json')
@@ -130,9 +146,15 @@ function toPluralArrayName(keyword) {
           const encodedName = encodeURIComponent(item.name);
           window.location.href = `contact_us.html`;
         });
-  
+        // Get and display local time
+        const localTimeStr = getLocalTime(item.timezone);
+        const timeElement = document.createElement('p');
+        timeElement.textContent = `Local Time: ${localTimeStr}`;
+        timeElement.classList.add('local-time');
+    
         textContainer.appendChild(title);
         textContainer.appendChild(desc);
+        textContainer.appendChild(timeElement);
 
         card.appendChild(img);
         card.appendChild(textContainer);
