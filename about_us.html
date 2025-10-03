@@ -13,9 +13,11 @@
             float: center;
             color: #f2f2f2;
             text-align: center;
+            border: 2px solid #005f99;
+            border-radius: 5px;
             padding: 16px 16px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 30px;
             }
             /* Change the color of links on hover */
             .topnav a:hover {
@@ -122,19 +124,31 @@
 
                 }
                 .about_us{
-                    margin: 30px;
                     float: left;
+                    display: flex;
+                    flex-direction: column; 
+                    padding: 10px;
+                    font-size: 25px;
                 }
-                .about_team{
-                    box-sizing: border-box;
-                    background: #000;
-                    margin: 30px;
+
+                .team-intro{
                     float: left;
+                    width: 250px;
+                    height: 200px;
+                    margin: 30px;
+                    padding: 15px 32px;
+                    background: #b3b3b3;
+                    border: 3px solid #005f99;
+                    border-radius: 2px;
+                    font-size: 25px;
                 }
                 .team{
                     float: left;
                     margin: 30px;
-                    border: bold;
+                    padding: 15px 32px;
+                    background: #b3b3b3;
+                    border: 3px solid #005f99;
+                    border-radius: 2px;
                 }
                 .button{
                     background-color: #3cc;
@@ -153,7 +167,7 @@
     <body>
         <section>
             <div class="topnav">
-                <image src="lets_go_logo.png" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="80px">
+                <image src="lets_go_logo.png" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="60px">
                 <a>Let's Go</a>
                 <a href="travel_recommendation.html" id="home">Home </a>
                 <a href="about_us.html" id="aboutus">About Us</a>
@@ -170,28 +184,31 @@
             </div>
  
         </section>
-        <section id="about_us">
-            <div>
+        <section id="about">
+            <div class="about_us">
                 <h1>About Us</h1>
                 <h4>Welcome to our company! We are a team of passionate dedicated individuals wanting to provide valueable unique experiences that allow our customers best possible times on their adventures.</h4>
             </div>
         </section>
         <section id="about_team">
-            <div class="team">
+            <div class="team-intro">
                 <h2>Our Team</h2>
-                <h6>Talk with someone</h6>
+                <h6>Talk with one of our staff to start your adventure</h6>
             </div>
             <div class="team">
+                <image src="gen_headshot.png" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="40px">
                 <h4>Pamela Knight</h4>
                 <p>Pamela is responsible for...</p>
                 <a href="about_us.html" class="button">CEO</a>
             </div>
             <div class="team">
+                <image src="gen_headshot.png" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="40px">
                 <h4>Neil Hill</h4>
                 <p>Neil is responsible for...</p>
                 <a href="about_us.html" class="button">Team Lead</a>
             </div>
             <div class="team">
+                <image src="gen_headshot.png" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="40px">
                 <h4>Rachel McKinny</h4>
                 <p>Rachel is responsible for...</p>
                 <a href="about_us.html" class="button">Travel Advisor</a>
